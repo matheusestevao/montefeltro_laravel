@@ -12,7 +12,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
     	Role::create([
         	'name'  => 'master_admin',
         	'label' => 'Master Admin'
@@ -24,8 +24,13 @@ class RolesTableSeeder extends Seeder
         ]);
 
         Role::create([
-        	'name'  => 'user',
-        	'label' => 'User'
+        	'name'  => 'stock',
+        	'label' => 'Stock'
+        ]);
+
+        Role::create([
+        	'name'  => 'vendedor',
+        	'label' => 'Vendedor'
         ]);
 
     }

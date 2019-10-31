@@ -36,7 +36,7 @@
 	                                    	@forelse($roles as $role)
 						                    	<tr>
 					                    			<td>{{ $role->id }}</td>
-					                    			<td>{{ $role->label }}</td>
+					                    			<td> @lang('message.'.$role->label) </td>
 					                    			<td>{{ $role->masterRole['label'] }}</td>
 					                    			<td>
 						                    			@can('role_edit')

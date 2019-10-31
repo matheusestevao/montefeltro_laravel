@@ -80,7 +80,10 @@ class RolesController extends Controller
     {
         $post = $request->all();
 
-        $form['name']        = strtolower($post['label']);
+        $nameRole = str_replace(' ', '_', $post['label']);
+        $nameRole = str_replace('-', '_', $nameRole);
+
+        $form['name']        = strtolower($nameRole);
         $form['label']       = ucfirst($post['label']);
         $form['master_role'] = $post['master_role'];
 

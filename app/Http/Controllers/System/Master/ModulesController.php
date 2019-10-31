@@ -78,12 +78,9 @@ class ModulesController extends Controller
      */
     public function store(ModuleRequest $request)
     {
-
         $post = $request->all();
 
-        $nameModule = replaceString($post['label']);
-
-        $nameModule = str_replace(' ', '_', $nameModule);
+        $nameModule = str_replace(' ', '_', $post['label']);
         $nameModule = str_replace('-', '_', $nameModule);
 
         $form['label']       = ucfirst($post['label']);
@@ -137,7 +134,7 @@ class ModulesController extends Controller
         return $permission;
     }
 
-    public function savePermissionRole(array $permission,int $user): void
+    public function savePermissionRole(object $permission,int $user): void
     {
         $permissionRole                = new PermissionRole();
         $permissionRole->role_id       = $user;
@@ -224,7 +221,7 @@ class ModulesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,int $id): boolean
+    public function destroy(Request $request,int $id): int
     {
         $isAdminMaster = $id == 1;
 

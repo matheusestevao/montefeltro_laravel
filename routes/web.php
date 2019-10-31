@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 Auth::routes();
@@ -57,7 +57,7 @@ Route::group(['namespace' => 'System'], function() {
 		Route::group(['namespace' => 'Users'], function() {
 
 			Route::group(['prefix' => 'profile'], function() {
-				
+
 				Route::get('/{id}', 'UsersController@myProfile')->name('profile.myProfile');
 				Route::post('/update/{id}', 'UsersController@myProfileUpdate')->name('profile.update');
 
@@ -75,12 +75,11 @@ Route::group(['namespace' => 'System'], function() {
 			});
 
 		});
-			
+
 
 	});
 
 });
-	
 
 
-	
+
