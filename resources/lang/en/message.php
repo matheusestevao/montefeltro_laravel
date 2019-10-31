@@ -19,6 +19,10 @@ return [
     'Users'           => 'Users',
     'System_Settings' => 'System Settings',
     'Modules'         => 'Modules',
+    'Permissions'          => 'Permissions',
+    'System_Settings'      => 'System Settings',
+    'System_Configuration' => 'System Configuration',
+    'Clients'              => 'Clients',
 
     /*PAGES*/
     'Name'                         => 'Name',
@@ -42,7 +46,7 @@ return [
     'Master_Profile'               => 'Master Profile',
     'Select'                       => 'Select',
     'Yes'                          => 'Yes',
-    'No'                           => 'Não',
+    'No'                           => 'No',
     'Menu'                         => 'Menu',
     'List'                         => 'List',
     'Add'                          => 'Add',

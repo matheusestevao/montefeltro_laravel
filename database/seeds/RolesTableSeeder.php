@@ -29,8 +29,13 @@ class RolesTableSeeder extends Seeder
         ]);
 
         Role::create([
-        	'name'  => 'vendedor',
-        	'label' => 'Vendedor'
+        	'name'  => 'internal_seller',
+        	'label' => 'Internal Seller'
+        ]);
+
+        Role::create([
+        	'name'  => 'external_seller',
+        	'label' => 'External Seller'
         ]);
 
     }

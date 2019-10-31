@@ -45,7 +45,6 @@ class ModulesController extends Controller
                 ->with('modules', $modules)
                 ->with('listBreadcrumb', $this->breadcrumb)
                 ->with('pageCurrent', $pageCurrent);
-
     }
 
     /**
@@ -123,7 +122,7 @@ class ModulesController extends Controller
 
     }
 
-    public function savePermission(array $module,string $name,string $label)
+    public function savePermission(object $module,string $name,string $label)
     {
         $permission            = new Permission();
         $permission->name      = $module->name.$name;

@@ -13,15 +13,15 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        
+
         Schema::create('roles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name', 50)->unique();
             $table->string('label', 100);
-            $table->integer('master_role')->unsigned()->nullable();
+            $table->unsignedBigInteger('master_role')->nullable();
             $table->foreign('master_role')->references('id')->on('roles');
         });
-        
+
     }
 
     /**

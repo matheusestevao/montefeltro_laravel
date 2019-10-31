@@ -12,15 +12,15 @@ use App\Models\Module;
 function trackables($table)
 {
 
-	$table->integer('created_by')->unsigned()->nullable();
+	$table->unsignedBigInteger('created_by')->nullable();
 	$table->foreign('created_by')->references('id')->on('users');
 
-	$table->integer('updated_by')->unsigned()->nullable();
+	$table->unsignedBigInteger('updated_by')->nullable();
 	$table->foreign('updated_by')->references('id')->on('users');
 
-	$table->integer('deleted_by')->unsigned()->nullable();
+	$table->unsignedBigInteger('deleted_by')->nullable();
 	$table->foreign('deleted_by')->references('id')->on('users');
-	
+
 }
 
 function modulePermissions ($idModule)
@@ -44,13 +44,13 @@ function permissionModuleRole($idRole, $idPermission)
 										->get();
 
 	if (count($permissionRole) > 0) {
-		
+
 		return 1;
 
 	} else {
-	
+
 		return 0;
-	
+
 	}
 
 }
@@ -59,7 +59,7 @@ function replaceString($string)
 {
 
 	$newString = preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $string ) );
-	
+
 	return $newString;
 
 }

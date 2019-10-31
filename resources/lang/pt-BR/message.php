@@ -23,6 +23,7 @@ return [
     'Permissions'          => 'Permissões',
     'System_Settings'      => 'Definições do Sistema',
     'System_Configuration' => 'Configurações do Sistema',
+    'Clients'              => 'Clientes',
 
     /*PAGES*/
     'Name'                         => 'Nome',

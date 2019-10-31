@@ -35,7 +35,7 @@
 						                    	<tr>
 					                    			<td>{{ $user->id }}</td>
 					                    			<td>{{ $user->name }}</td>
-					                    			<td>{{ $user->ReturnNameRole($user->id) }}</td>
+					                    			<td>@lang('message.'.$user->ReturnNameRole($user->id))</td>
 					                    			<td>
 						                    			@can('users_edit')
 							                    			<a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary" ><i class="fas fa-pencil-alt"></i></a>
@@ -66,7 +66,6 @@
 			$(document).ready(function() {
 
 				$('.delete-user').click(function () {
-
 					$.ajaxSetup({
 						headers: {
 					    	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -87,7 +86,6 @@
 					})
 					.then((willDelete) => {
 						if (willDelete) {
-
 							$.ajax({
 								method: 'post',
 								type: 'json',
@@ -96,20 +94,16 @@
 									module: module,
 								},
 								success: function (module) {
-
 									swal("Usuário deletado com sucesso.", {
 							      		icon: "success",
 							    	});
 
 							    	el.parent().parent().remove();
-
 								},
 								error: function (module) {
-
 									swal("Erro ao deletar o usuário.", {
 							      		icon: "warning",
 							    	});
-
 								}
 
 							});
@@ -143,27 +137,6 @@
 	                },
 	                pagingType: "full_numbers",
 			        lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
-			        dom: 'Bfrtip',
-			        buttons: [
-			        	{
-			        		extend: 'csv',
-			        		text: '<i class="icon-datatable fas fa-file-csv"></i>',
-			        		title: "@lang('message.Users_Listing')",
-			        		filename: "@lang('message.Users_Listing')",
-			        	},
-			        	{
-			        		extend: 'excel',
-			        		text: '<i class="icon-datatable fas fa-file-excel"></i>',
-			        		title: "@lang('message.Users_Listing')",
-			        		filename: "@lang('message.Users_Listing')",
-			        	},
-			        	{
-			        		extend: 'pdfHtml5',
-			        		text: '<i class="icon-datatable fas fa-file-pdf"></i>',
-			        		title: "@lang('message.Users_Listing')",
-			        		filename: "@lang('message.Users_Listing')",
-			        	}
-			        ]
 			    });
 		    </script>
 		@endpush

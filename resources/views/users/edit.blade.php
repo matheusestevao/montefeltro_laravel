@@ -50,7 +50,7 @@
                                             <select class="form-control" name="role">
                                                 <option value="">@lang('message.Select_Profile')...</option>
                                                 @foreach($roles as $role)
-                                                    <option value="{{ $role->id }}" {{ $role->id === $user->ReturnRoleUser($user->id) ? 'selected' : ''}}>{{ $role->label }}</option>
+                                                    <option value="{{ $role->id }}" {{ $role->id === $user->ReturnRoleUser($user->id) ? 'selected' : ''}}>@lang('message.'.$role->label)</option>
                                                 @endforeach
                                             </select>
                                     	</div>
@@ -79,35 +79,6 @@
         @push('form_js')
         	<script src="{{ asset('libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
             <script src="{{ asset('libs/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js') }}"></script>
-            <script>
-            	$(document).ready(function() {
-
-            		$("#input-image-perfil").change(function() {
-
-            			let fup 	 = $(this);
-					    let fileName = fup.val();
-					    let ext      = fileName.substring(fileName.lastIndexOf('.') + 1);
-
-					    if (ext=="jpeg" || ext=="png" || ext=="jpg" || ext=="gif" || ext=="bmp" || ext=="svg") {
-
-					        return true;
-					   
-					    } else {
-
-					        swal({
-								title: "Erro",
-								text: "O arquivo selecionado não é uma imagem.",
-								icon: "warning",
-							});
-
-							$(this).val("");
-					    
-					    }
-
-            		});
-
-            	});
-            </script>
         @endpush
     @else
         <script>
