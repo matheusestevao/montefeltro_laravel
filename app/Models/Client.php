@@ -14,14 +14,14 @@ class Client extends Model
 
     protected $fillable = ['name', 'external_id', 'internal_id', 'note', 'created_by', 'updated_by', 'deleted_by'];
 
-    public function external_id(): HasMany
+    public function external(): HasMany
     {
-        return $this->hasMany(User::class, 'external_id');
+        return $this->hasMany(User::class, 'id', 'external_id');
     }
 
-    public function internal_id(): HasMany
+    public function internal(): HasMany
     {
-        return $this->hasMany(User::class, 'internal_id');
+        return $this->hasMany(User::class, 'id', 'internal_id');
     }
 
     public function sellerName(?int $id): ?string

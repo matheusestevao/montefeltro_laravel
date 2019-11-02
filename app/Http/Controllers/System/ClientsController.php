@@ -158,7 +158,7 @@ class ClientsController extends Controller
         $post['external_id'] = $post['external_seller'] ?? $post['external_seller'];
         $post['internal_id'] = $post['internal_seller'] ?? $post['internal_seller'];
 
-        $client = Client::find(1);
+        $client = Client::find($id);
         $updateClient = $client->update($post);
 
         if($updateClient) {

@@ -10,12 +10,12 @@ class Role extends Model
 	public $timestamps = false;
 	protected $fillable = ['name', 'label', 'master_role'];
 
-	public function permissions()
+	public function permissions(): belongsToMany
     {
     	return $this->belongsToMany(Permission::class);
     }
 
-    public function masterRole()
+    public function masterRole(): hasOne
     {
     	return $this->hasOne("App\Models\Role","id","master_role");
     }

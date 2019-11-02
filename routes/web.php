@@ -67,13 +67,23 @@ Route::group(['namespace' => 'System'], function() {
 		});
 
         /*CLIENTS*/
-        Route::group(['prefix' => 'client'], function() {
+        Route::group(['prefix' => 'clients'], function() {
             Route::get('/', 'ClientsController@index')->name('client.index');
             Route::get('/add', 'ClientsController@create')->name('client.add');
             Route::post('/store', 'ClientsController@store')->name('client.store');
             Route::get('/edit/{id}', 'ClientsController@edit')->name('client.edit');
             Route::post('/update/{id}', 'ClientsController@update')->name('client.update');
             Route::post('/delete/{id}', 'ClientsController@destroy')->name('client.delete');
+        });
+
+        /*CATEGORIES*/
+        Route::group(['prefix' => 'categories'], function() {
+            Route::get('/', 'CategoriesController@index')->name('category.index');
+            Route::get('/add', 'CategoriesController@create')->name('category.add');
+            Route::post('/store', 'CategoriesController@store')->name('category.store');
+            Route::get('/edit/{id}', 'CategoriesController@edit')->name('category.edit');
+            Route::post('/update/{id}', 'CategoriesController@update')->name('category.update');
+            Route::post('/delete/{id}', 'CategoriesController@destroy')->name('category.delete');
         });
 
 	});

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\RoleUser;
+use App\Models\Client;
 use App\Notifications\SentEmailResetPassword;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -68,6 +69,16 @@ class User extends Authenticatable
         }
 
         return $this->roles->contains('name', $roles);
+    }
+
+    public function external_id(): belongsToMany
+    {
+        return $this->belongsToMany(Client::class);
+    }
+
+    public function internal_id(): belongsToMany
+    {
+        return $this->belongsToMany(Client::class);
     }
 
     public function sendPasswordResetNotification($token)
