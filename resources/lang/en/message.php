@@ -81,6 +81,12 @@ return [
     'external_seller'                    => 'external seller',
     'External Seller'                    => 'External Seller',
     'external seller'                    => 'external seller',
+    'Add_Client'                         => 'Add Client',
+    'New_Client'     => 'New Client',
+    'Edit_Client'    => 'Edit Client',
+    'Select_External_Seller'  => 'Select External Seller',
+    'Select_Internal_Seller'  => 'Select Internal Seller',
+    'Note'   => 'Note',
 
     /*CONTROLLERS*/
     'Module successfully registered.'                  => 'Module successfully registered.',
@@ -89,6 +95,21 @@ return [
     'Profile Successfully Saved.'                      => 'Profile Successfully Saved.',
     'Error registering the Profile. Please try again.' => 'Error registering the Profile. Please try again.',
     'Profile Updated Successfully.'                    => 'Profile Updated Successfully.',
+    'Customer Successful Registration.'                => 'Customer Successful Registration.',
+    'Error registering customer. Please try again.'    => 'Error registering customer. Please try again.',
+    'Module Updated Successfully.'                  => 'Module Updated Successfully.',
+    'Failed to upload image.'                    => 'Failed to upload image.',
+    'User deleted successfully.'                 => 'User deleted successfully.',
+    'User updated successfully.'                 => 'User updated successfully.',
+    'Error linking profile to user. Please contact the developer.' => 'Error linking profile to user. Please contact the developer.',
+    'Error saving user. Please try again.'     => 'Error saving user. Please try again.',
+    'User successfully registered.'               => 'User successfully registered.',
+    'Client Updated Successfully.'              => 'Client Updated Successfully.',
+    'Error updating Client. Please try again.'  => 'Error updating Client. Please try again.',
+    'Client deleted successfully.'    => 'Client deleted successfully.',
+    'Error deleting client.' => 'Error deleting client.',
+    'User deleted successfully.'    => 'User deleted successfully.',
+    'Error deleting user.'    => 'Error deleting user.',
 
     /*ALERTS AND NOTIFICATIONS*/
     'When_updating_the_role_master,_the_permissions_of_the_role_being_edited_will_change_according_to_its_new_master._Any_changes_made_previously_to_the_role_being_edited_will_be_lost.' => 'When updating the role master, the permissions of the role being edited will change according to its new master. Any changes made previously to the role being edited will be lost.',
@@ -107,5 +128,7 @@ return [
     'To_remove_the_permission_from_a_specific_module,_access_the_profile_through_the_Permission_module_or_the_Profile_module.' => 'To remove the permission from a specific module, access the profile through the Permissions module or the Profiles module.',
     'Replicate_changes_to_child_Profiles' => 'Replicate changes to child Profiles',
     'When_updating_the_son(s)_Profile(s),_if_you_have_made_an_individual_update,_they_will_be_lost,_having_to_re-read_them_again,_if_necessary.' => 'When updating the son(s) Profile(s), if you have made an individual update, they will be lost, having to re-read them again, if necessary.',
+    'Really Want to delete this Client? This action cannot be reversed.' => 'Really Want to delete this Client? This action cannot be reversed.',
+    'Do you really want to delete this user? This action cannot be reversed.' => 'Do you really want to delete this user? This action cannot be reversed.',
 
 ];

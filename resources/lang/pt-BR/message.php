@@ -82,6 +82,12 @@ return [
     'external_seller'                    => 'vendedor externo',
     'External Seller'                    => 'Vendedor Externo',
     'external seller'                    => 'vendedor externo',
+    'Add_Client'     => 'Adicionar Cliente',
+    'New_Client'     => 'Novo Cliente',
+    'Edit_Client'    => 'Editar Cliente',
+    'Select_External_Seller'  => 'Selecione o Vendedor Externo',
+    'Select_Internal_Seller'  => 'Selecione o Vendedor Interno',
+    'Note'    => 'Observação',
 
     /*CONTROLLERS*/
     'Module successfully registered.'                  => 'Módulo Cadastrado com sucesso.',
@@ -91,6 +97,21 @@ return [
     'Profile Successfully Saved.'                      => 'Perfil Cadastrado com Sucesso.',
     'Error registering the Profile. Please try again.' => 'Erro ao cadastrar o Perfil. Favor, tente novamente.',
     'Profile Updated Successfully.'                    => 'Perfil Atualizado com Sucesso.',
+    'Customer Successful Registration.'                => 'Cliente Cadastrado com Sucesso.',
+    'Error registering customer. Please try again.'    => 'Erro ao cadastrar o cliente. Favor tente novamente.',
+    'Module Updated Successfully.'               => 'Módulo atualizado com sucesso.',
+    'Failed to upload image.'                    => 'Falha ao fazer upload da imagem.',
+    'User deleted successfully.'                 => 'Usuário deletado com Sucesso.',
+    'User updated successfully.'                 => 'Usuário atualizado com Sucesso.',
+    'Error linking profile to user. Please contact the developer.' => 'Erro ao vincular o perfil ao usuário. Favor contate o desenvolvedor.',
+    'Error saving user. Please try again.'     => 'Erro ao salvar o usuário. Favor, tente novamente.',
+    'User successfully registered.'               => 'Usuário Cadastrdo com Sucesso.',
+    'Client Updated Successfully.'         => 'Cliente atualizado com Sucesso.',
+    'Error updating Client. Please try again.'   => 'Erro ao atualizar o Cliente. Favor, tente novamente.',
+    'Client deleted successfully.'       => 'Cliente deletado com sucesso.',
+    'Error deleting client.'       => 'Erro ao deletar o cliente.',
+    'User deleted successfully.'   => 'Usuário Deletado com Sucesso.',
+    'Error deleting user.'    => 'Erro ao Deletar o Usuário.',
 
     /*ALERTS AND NOTIFICATIONS*/
     'When_updating_the_role_master,_the_permissions_of_the_role_being_edited_will_change_according_to_its_new_master._Any_changes_made_previously_to_the_role_being_edited_will_be_lost.' => 'Ao atualizar o Perfil Master, as permissões do Perfil que esta sendo editada serão alteradas, conforme o seu novo Perfil Master. Qualquer alteração feita anteriormente, no Perfil que esta sendo editado, será perdida.',
@@ -108,6 +129,8 @@ return [
     'To_remove_the_permission_from_a_specific_module,_access_the_profile_through_the_Permission_module_or_the_Profile_module.' => 'Para retirar a permissão de algum módulo especifico, acesse o perfil através do módulo de Permissões ou pelo módulo de Perfis.',
     'Replicate_changes_to_child_Profiles' => 'Replicar alterações para os perfil(s) filho(s)',
     'When_updating_the_son(s)_Profile(s),_if_you_have_made_an_individual_update,_they_will_be_lost,_having_to_re-read_them_again,_if_necessary.' => 'Ao atualizar o(s) Perfil(s) filho(s), caso tenha feito atualização individual, as mesmas serão perdidas, tendo que refaze-las novamente, caso necessário.',
+    'Really Want to delete this Client? This action cannot be reversed.' => 'Realmente Deseja deletar esse Cliente? Essa ação não poderá ser revertida.',
+    'Do you really want to delete this user? This action cannot be reversed.' => 'Realmente Deseja deletar este usuário? Essa ação não poderá ser revertida.',
 
 
 ];

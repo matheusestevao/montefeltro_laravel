@@ -92,11 +92,11 @@ class RolesController extends Controller
         if ($form['master_role'] != '' && $role) {
             $this->storePermissionRole($form['master_role'], $role->id);
 
-            return redirect()->route('role.index')->with('success', trans('message.Profile Successfully Saved.'));
+            return redirect()->route('role.index')->with('success', 'Profile Successfully Saved.');
         } else if ($role) {
-            return redirect()->route('role.index')->with('success', trans('message.Profile Successfully Saved.'));
+            return redirect()->route('role.index')->with('success', 'Profile Successfully Saved.');
         } else {
-            return back()->withInputs()->with('error', trans('message.Error registering the Profile. Please try again.'));
+            return back()->withInputs()->with('error', 'Error registering the Profile. Please try again.');
         }
     }
 
@@ -123,8 +123,7 @@ class RolesController extends Controller
                     ->with('role', $role)
                     ->with('roles', $roles)
                     ->with('pageCurrent', $pageCurrent)
-                    ->with('listBreadcrumb', $this->breadcrumb);;
-
+                    ->with('listBreadcrumb', $this->breadcrumb);
     }
 
     /**
@@ -136,7 +135,6 @@ class RolesController extends Controller
      */
     public function update(RoleRequest $request,int $id)
     {
-
         $post = $request->all();
 
         $form['name']        = strtolower($post['label']);
@@ -155,8 +153,7 @@ class RolesController extends Controller
 
         return redirect()
                 ->route('role.index')
-                ->with('success', trans('message.Profile Updated Successfully.'));
-
+                ->with('success', 'Profile Updated Successfully.');
     }
 
     /**
@@ -178,18 +175,15 @@ class RolesController extends Controller
 
     }
 
-    public function storePermissionRole(int $masterRole,int $roleId)
+    public function storePermissionRole(int $masterRole,int $roleId): void
     {
-
         $masterPermission = PermissionRole::where('role_id', $masterRole)->get();
 
         foreach ($masterPermission as $copyPermission) {
-
             $permissionRole                = new PermissionRole();
             $permissionRole->permission_id = $copyPermission->permission_id;
             $permissionRole->role_id       = $roleId;
             $permissionRole->save();
-
         }
 
     }

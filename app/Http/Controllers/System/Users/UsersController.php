@@ -12,6 +12,24 @@ use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
+    protected $breadcrumb = array();
+
+    public function __construct()
+    {
+        $this->breadcrumb = [
+            [
+                "title"  => "Dashboard",
+                "url"    => route('home'),
+                "active" => ""
+            ],
+            [
+                "title"  => "Users",
+                "url"    => '',
+                "active" => "active"
+            ]
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,28 +37,14 @@ class UsersController extends Controller
      */
     public function index()
     {
-        
-        $listBreadcrumb = [
-            [
-             "title"  => "Dashboard", 
-             "url"    => route('home'),
-             "active" => ""
-            ],
-            [
-             "title"  => "Users", 
-             "url"    => '',
-             "active" => "active"
-            ],
-        ];      
-
-        $users = User::where('id', '<>', 1)->get();        
+        $users = User::where('id', '<>', 1)->get();
 
         $pageCurrent = "Users";
 
 
         return view('users.index')
                 ->with('users', $users)
-                ->with('listBreadcrumb', $listBreadcrumb)
+                ->with('listBreadcrumb',$this->breadcrumb)
                 ->with('pageCurrent', $pageCurrent);
 
     }
@@ -52,32 +56,20 @@ class UsersController extends Controller
      */
     public function create()
     {
-        
-        $listBreadcrumb = [
-            [
-             "title"  => "Dashboard", 
-             "url"    => route('home'),
-             "active" => ""
-            ],
-            [
-             "title"  => "Users", 
-             "url"    => route('user.index'),
-             "active" => ""  
-            ],
-            [
-             "title"  => "New_User", 
-             "url"    => '',
-             "active" => "active"
-            ],
-        ];      
 
-        $roles = Role::where('id', '<>', 1)->get();    
+        $this->breadcrumb[] =  [
+            "title"  => "New_User",
+            "url"    => '',
+            "active" => "active"
+        ];
+
+        $roles = Role::where('id', '<>', 1)->get();
 
         $pageCurrent = "New_User";
 
         return view('users.add')
                 ->with('roles', $roles)
-                ->with('listBreadcrumb', $listBreadcrumb)
+                ->with('listBreadcrumb', $this->breadcrumb)
                 ->with('pageCurrent', $pageCurrent);
 
     }
@@ -90,7 +82,7 @@ class UsersController extends Controller
      */
     public function store(UserRequest $request)
     {
-        
+
         $post = $request->all();
         $post['password'] = bcrypt($post['password']);
 
@@ -101,46 +93,30 @@ class UsersController extends Controller
         $user->save();
 
         if ($user) {
-
             $roleUser = new RoleUser();
             $roleUser->role_id = $post['role'];
             $roleUser->user_id = $user->id;
             $roleUser->save();
 
             if ($roleUser) {
-
                 return redirect()
                             ->route('user.index')
-                            ->with('success', 'Usuário cadastrado com Sucesso.');
-
+                            ->with('success', 'User successfully registered.');
             } else {
-
+                $newUser = User::find($user->id);
+                $newUser->delete();
+                
                 return redirect()
                             ->route('user.index')
-                            ->with('error', 'Erro ao vincular o perfil ao usuário. Favor contate o desenvolvedor.');
-
+                            ->with('error', 'Error linking profile to user. Please contact the developer.');
             }
-
         } else {
-
             return redirect()
                         ->route('user.index')
-                        ->with('error', 'Erro ao salvar o usuário. Favor, tente novamente.')
+                        ->with('error', 'Error saving user. Please try again.')
                         ->withInput();
-
         }
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -149,29 +125,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        
-        $listBreadcrumb = [
-            [
-             "title"  => "Dashboard", 
-             "url"    => route('home'),
-             "active" => ""
-            ],
-            [
-             "title"  => "Users", 
-             "url"    => route('user.index'),
-             "active" => ""  
-            ],
-            [
-             "title"  => "Edit_User", 
-             "url"    => '',
-             "active" => "active"
-            ],
-        ];      
+        $this->breadcrumb[] = [
+            "title"  => "Edit_User",
+            "url"    => '',
+            "active" => "active"
+        ];
 
         $user  = User::find($id);
-        $roles = Role::where('id', '<>', 1)->get();    
+        $roles = Role::where('id', '<>', 1)->get();
 
         $pageCurrent = "Edit_User";
         $nameCurrent = " - ".$user->name;
@@ -179,10 +142,9 @@ class UsersController extends Controller
         return view('users.edit')
                 ->with('user', $user)
                 ->with('roles', $roles)
-                ->with('listBreadcrumb', $listBreadcrumb)
+                ->with('listBreadcrumb', $this->breadcrumb)
                 ->with('nameCurrent', $nameCurrent)
                 ->with('pageCurrent', $pageCurrent);
-        
     }
 
     /**
@@ -194,7 +156,6 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $validatedData = $request->validate([
             'name'         => 'required',
             'email'        => 'required|email|unique:users,email,'.$id,
@@ -206,13 +167,9 @@ class UsersController extends Controller
         $user = User::find($id);
 
         if ($post['password'] != '') {
-
             $post['password'] = bcrypt($post['password']);
-
         } else {
-
             $post['password'] = $user->password;
-
         }
 
         $user->name     = $post['name'];
@@ -223,34 +180,26 @@ class UsersController extends Controller
         $roleUser = RoleUser::where('user_id', $id)->get()[0];
 
         if ($roleUser->role_id != $post['role']) {
-
             $delRoleUser = RoleUser::where('user_id', $id)->delete();
-            
+
             $roleUser          = new RoleUser();
             $roleUser->role_id = $post['role'];
             $roleUser->user_id = $id;
             $roleUser->save();
 
             if ($roleUser) {
-
                 return redirect()
                             ->route('user.index')
-                            ->with('success', 'Usuário atualizado com Sucesso.');
-
+                            ->with('success', 'User updated successfully.');
             } else {
-
                 return redirect()
                             ->route('user.index')
-                            ->with('error', 'Erro ao vincular o perfil ao usuário. Favor contate o desenvolvedor.');
-
+                            ->with('error', 'Error linking profile to user. Please contact the developer.');
             }
-
         } else {
-
             return redirect()
                         ->route('user.index')
-                        ->with('success', 'Usuário atualizado com Sucesso.');
-
+                        ->with('success', 'User updated successfully.');
         }
 
     }
@@ -261,35 +210,34 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request,int $id)
     {
-        
+
         $user     = User::find($id)->delete();
         $roleUser = RoleUser::where('user_id', $id)->delete();
 
         return redirect()
                     ->route('user.index')
-                    ->with('success', 'Usuário deletado com Sucesso.'); 
+                    ->with('success', 'User deleted successfully.');
 
     }
 
-    public function myProfile($id)
+    public function myProfile(int $id)
     {
-
         $listBreadcrumb = [
             [
-             "title"  => "Dashboard", 
+             "title"  => "Dashboard",
              "url"    => route('home'),
              "active" => ""
             ],
             [
-             "title"  => "My_Profile", 
+             "title"  => "My_Profile",
              "url"    => '',
              "active" => "active"
             ],
-        ];      
+        ];
 
-        $user = User::find($id);        
+        $user = User::find($id);
 
         $pageCurrent = "My_Profile";
 
@@ -300,44 +248,35 @@ class UsersController extends Controller
 
     }
 
-    public function myProfileUpdate(MyProfileRequest $request, $id)
+    public function myProfileUpdate(MyProfileRequest $request,int $id)
     {
-
         $nameFile = null;
         $post     = $request->all();
         $user     = User::find($id);
 
         if ($post['password'] != '') {
-
             $post['password'] = bcrypt($post['password']);
-
         } else {
-
             $post['password'] = $user->password;
-
         }
 
         if ($request->hasFile('image_perfil') && $request->file('image_perfil')->isValid()) {
-
             $name      = 'image_profile_'.$user->id;
-            $extension = $request->image_perfil->extension(); 
+            $extension = $request->image_perfil->extension();
 
             $nameFile = "{$name}.{$extension}";
 
             $upload = $request->image_perfil->storeAs('MyProfile', $nameFile);
 
             if (!$upload) {
-
                 return redirect()
                         ->back()
-                        ->with('error', 'Falha ao fazer upload da imagem.')
+                        ->with('error', 'Failed to upload image.')
                         ->withInput();
-
             }
-
         }
 
-        $user->name           = $post['name']; 
+        $user->name           = $post['name'];
         $user->password       = $post['password'];
         $user->image_profile  = $nameFile;
         $user->email          = $post['email'];
@@ -345,7 +284,7 @@ class UsersController extends Controller
 
         return redirect()
                     ->route('profile.myProfile', $id)
-                    ->with('success', 'Perfil Atualizado com Sucesso.');
+                    ->with('success', 'Profile Updated Successfully.');
 
     }
 

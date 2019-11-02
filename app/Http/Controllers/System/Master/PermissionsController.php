@@ -86,7 +86,7 @@ class PermissionsController extends Controller
 
         return redirect()
                     ->route('permission.index')
-                    ->with('success', trans('message.Permissions Successfully saved.'));
+                    ->with('success', 'Permissions Successfully saved.'));
 
     }
 

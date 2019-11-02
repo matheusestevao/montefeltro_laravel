@@ -10,10 +10,12 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Models\RoleUser;
 use App\Notifications\SentEmailResetPassword;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -33,14 +35,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function ReturnRoleUser($idUser)
+    public function returnRoleUser($idUser)
     {
         $roleId = RoleUser::where('user_id',$idUser)->get();
 
         return $roleId[0]->role_id;
     }
 
-    public function ReturnNameRole($idUser)
+    public function returnNameRole($idUser)
     {
         $idRole = RoleUser::where('user_id',$idUser)->get();
 

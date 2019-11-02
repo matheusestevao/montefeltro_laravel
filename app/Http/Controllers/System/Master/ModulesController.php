@@ -113,16 +113,16 @@ class ModulesController extends Controller
 
             return redirect()
                     ->route('module.index')
-                    ->with('success', trans('message.Module successfully registered.'));
+                    ->with('success', 'Module successfully registered.');
         } else {
             return back()
                     ->withInputs()
-                    ->with('error', trans('message.Error registering the Module. Please try again.'));
+                    ->with('error', 'Error registering the Module. Please try again.');
         }
 
     }
 
-    public function savePermission(object $module,string $name,string $label)
+    public function savePermission(object $module,string $name,string $label): object
     {
         $permission            = new Permission();
         $permission->name      = $module->name.$name;
@@ -164,7 +164,6 @@ class ModulesController extends Controller
                 ->with('module', $module)
                 ->with('listBreadcrumb', $this->breadcrumb)
                 ->with('pageCurrent', $pageCurrent);
-
     }
 
     /**
@@ -176,7 +175,6 @@ class ModulesController extends Controller
      */
     public function update(ModuleRequest $request,int $id)
     {
-
         $post = $request->all();
 
         $nameModule = replaceString($post['label']);
@@ -202,8 +200,7 @@ class ModulesController extends Controller
 
         return redirect()
                 ->route('module.index')
-                ->with('success', trans('message.Module Updated Successfully.'));
-
+                ->with('success', 'Module Updated Successfully.');
     }
 
     public function updatePermission(array $module,array $form,string $name,string $label): void

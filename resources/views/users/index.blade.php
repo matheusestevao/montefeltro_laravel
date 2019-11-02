@@ -35,7 +35,7 @@
 						                    	<tr>
 					                    			<td>{{ $user->id }}</td>
 					                    			<td>{{ $user->name }}</td>
-					                    			<td>@lang('message.'.$user->ReturnNameRole($user->id))</td>
+					                    			<td>@lang('message.'.$user->returnNameRole($user->id))</td>
 					                    			<td>
 						                    			@can('users_edit')
 							                    			<a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary" ><i class="fas fa-pencil-alt"></i></a>
@@ -77,11 +77,11 @@
 					let el     = $(this);
 
 					swal({
-						title: "Confirm Delete?",
-						text: "Realmente Deseja deletar este usuário? Essa ação não poderá ser revertida.",
+						title: "@lang('message.Confirm_Exclusion')?",
+						text: "@lang('message.Do you really want to delete this user? This action cannot be reversed.')",
 						icon: "warning",
 						dangerMode: [true],
-						buttons: ["Não", true],
+						buttons: ["@lang('message.No')", "@lang('message.Yes')"],
 
 					})
 					.then((willDelete) => {
@@ -94,24 +94,20 @@
 									module: module,
 								},
 								success: function (module) {
-									swal("Usuário deletado com sucesso.", {
+									swal("@lang('message.User deleted successfully.')", {
 							      		icon: "success",
 							    	});
 
 							    	el.parent().parent().remove();
 								},
 								error: function (module) {
-									swal("Erro ao deletar o usuário.", {
+									swal("@lang('message.Error deleting user.')", {
 							      		icon: "warning",
 							    	});
 								}
-
 							});
-
 					  	}
-
 					});
-
 				});
 
 			});
@@ -140,7 +136,6 @@
 			    });
 		    </script>
 		@endpush
-
 	@else
 		<script>
 			window.location.href = "{{ route('home') }}";

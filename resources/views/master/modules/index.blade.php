@@ -63,9 +63,7 @@
 
 	    <script>
 			$(document).ready(function() {
-
 				$('.delete-module').click(function () {
-
 					$.ajaxSetup({
 						headers: {
 					    	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -82,7 +80,6 @@
 						icon: "warning",
 						dangerMode: [true],
 						buttons: ["@lang('message.No')", true],
-
 					})
 					.then((willDelete) => {
 						if (willDelete) {
@@ -99,18 +96,18 @@
 							    	});
 
 							    	el.parent().parent().remove();
-                                    window.location.reload();
+
+									setTimeout(function(){
+										window.location.reload();
+									}, 3000);
 								},
 								error: function (module) {
 									swal("@lang('message.Error_deleting_module.')", {
 							      		icon: "warning",
 							    	});
-
 								}
-
 							});
 					  	}
-
 					});
 
 				});
