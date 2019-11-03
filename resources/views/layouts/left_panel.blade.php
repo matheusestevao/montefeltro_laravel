@@ -57,7 +57,10 @@
                                 @endif
 
                                 <li class="menu-item-has-children dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> @lang('message.'.$itemMenu->group)</a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="menu-icon fas fa-list"></i>
+                                        @lang('message.'.$itemMenu->group)
+                                    </a>
                                     <ul class="sub-menu children dropdown-menu">
                                         @can($itemMenu->name)
                                             <li>
