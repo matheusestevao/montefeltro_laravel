@@ -91,6 +91,23 @@ return [
     'Add_Category'                       => 'Add Category',
     'New_Category'                       => 'New Category',
     'Edit_Category'                      => 'Edit Category',
+    'Merchandise'                        => 'Merchandise',
+    'Merchandises'                       => 'Merchandises',
+    'Add_Merchandise'                    => 'Add Merchandise',
+    'Input_Merchandise'                  => 'Input Merchandise',
+    'Output_Merchandise'                 => 'Output Merchandise',
+    'Service Order'                      => 'Service Order',
+    'Input'                              => 'Input',
+    'input'                              => 'input',
+    'Output'                             => 'Output',
+    'output'                             => 'output',
+    'Withdrawn'                          => 'Withdrawn',
+    'withdrawn'                          => 'withdrawn',
+    'Withdrawn By'                       => 'Withdrawn By',
+    'withdrawn by'                       => 'withdrawn by',
+    'Category'                           => 'Category',
+    'Client'                             => 'Client',
+    'Add Merchandise'                    => 'Add Merchandise',
 
     /*CONTROLLERS*/
     'Module successfully registered.'                  => 'Module successfully registered.',
@@ -120,6 +137,8 @@ return [
     'Error registering Category. Please try again.'    => 'Error registering Category. Please try again.',
     'Category deleted successfully.'                   => 'Category deleted successfully.',
     'Error deleting Category.'                         => 'Error deleting Category.',
+    'Merchandise deleted successfully.'                => 'Merchandise deleted successfully.',
+    'Error deleting Merchandise.'                      => 'Error deleting Merchandise.',
 
     /*ALERTS AND NOTIFICATIONS*/
     'When_updating_the_role_master,_the_permissions_of_the_role_being_edited_will_change_according_to_its_new_master._Any_changes_made_previously_to_the_role_being_edited_will_be_lost.' => 'When updating the role master, the permissions of the role being edited will change according to its new master. Any changes made previously to the role being edited will be lost.',
@@ -141,5 +160,6 @@ return [
     'Really Want to delete this Client? This action cannot be reversed.' => 'Really Want to delete this Client? This action cannot be reversed.',
     'Do you really want to delete this user? This action cannot be reversed.' => 'Do you really want to delete this user? This action cannot be reversed.',
     'Really Want to delete this Category? This action cannot be reversed.' => 'Really Want to delete this Category? This action cannot be reversed.',
+    'Really Want to delete this Merchandise? This action cannot be reversed.' => 'Really Want to delete this Merchandise? This action cannot be reversed.',
 
 ];

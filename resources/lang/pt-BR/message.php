@@ -92,6 +92,23 @@ return [
     'Add_Category'                       => 'Adicionar Categoria',
     'New_Category'                       => 'Nova Categoria',
     'Edit_Category'                      => 'Editar Categoria',
+    'Merchandise'                        => 'Mercadoria',
+    'Merchandises'                       => 'Mercadorias',
+    'Add_Merchandise'                    => 'Adicionar Mercadoria',
+    'Input_Merchandise'                  => 'Entrada de Mercadoria',
+    'Output_Merchandise'                 => 'Saída de Mercadoria',
+    'Service Order'                      => 'Ordem de Serviço',
+    'Input'                              => 'Entrada',
+    'input'                              => 'entrada',
+    'Output'                             => 'Saída',
+    'output'                             => 'saída',
+    'Withdrawn'                          => 'Retirada',
+    'withdrawn'                          => 'retirada',
+    'Withdrawn By'                       => 'Retirada Por',
+    'withdrawn by'                       => 'retirada por',
+    'Category'                           => 'Categoria',
+    'Client'                             => 'Cliente',
+    'Add Merchandise'                    => 'Adicionar Mercadoria',
 
     /*CONTROLLERS*/
     'Module successfully registered.'                  => 'Módulo Cadastrado com sucesso.',
@@ -122,6 +139,8 @@ return [
     'Error registering Category. Please try again.'    => 'Erro ao atualizar a Categoria. Favor, tente novamente.',
     'Category deleted successfully.'                   => 'Categoria deletada com Sucesso.',
     'Error deleting Category.'                         => 'Erro ao Deletar a Categoria.',
+    'Merchandise deleted successfully.'                => 'Mercadoria Excluida com Sucesso.',
+    'Error deleting Merchandise.'                      => 'Erro ao deletar a Mercadoria.',
 
     /*ALERTS AND NOTIFICATIONS*/
     'When_updating_the_role_master,_the_permissions_of_the_role_being_edited_will_change_according_to_its_new_master._Any_changes_made_previously_to_the_role_being_edited_will_be_lost.' => 'Ao atualizar o Perfil Master, as permissões do Perfil que esta sendo editada serão alteradas, conforme o seu novo Perfil Master. Qualquer alteração feita anteriormente, no Perfil que esta sendo editado, será perdida.',
@@ -142,6 +161,7 @@ return [
     'Really Want to delete this Client? This action cannot be reversed.' => 'Realmente Deseja deletar esse Cliente? Essa ação não poderá ser revertida.',
     'Do you really want to delete this user? This action cannot be reversed.' => 'Realmente Deseja deletar este usuário? Essa ação não poderá ser revertida.',
     'Really Want to delete this Category? This action cannot be reversed.' => 'Deseja mesmo excluir esta Categoria? Esta ação não pode ser revertida.',
+    'Really Want to delete this Merchandise? This action cannot be reversed.' => 'Deseja mesmo excluir esta mercadoria? Esta ação não pode ser revertida.',
 
 
 ];

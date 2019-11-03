@@ -86,6 +86,16 @@ Route::group(['namespace' => 'System'], function() {
             Route::post('/delete/{id}', 'CategoriesController@destroy')->name('category.delete');
         });
 
+         /*MERCHANDISES*/
+        Route::group(['prefix' => 'merchandises'], function() {
+            Route::get('/', 'MerchandisesController@index')->name('merchandise.index');
+            Route::get('/add', 'MerchandisesController@create')->name('merchandise.add');
+            Route::post('/store', 'MerchandisesController@store')->name('merchandise.store');
+            Route::get('/edit/{id}', 'MerchandisesController@edit')->name('merchandise.edit');
+            Route::post('/update/{id}', 'MerchandisesController@update')->name('merchandise.update');
+            Route::post('/delete/{id}', 'MerchandisesController@destroy')->name('merchandise.delete');
+        });
+
 	});
 
 });
