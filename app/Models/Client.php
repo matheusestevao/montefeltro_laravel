@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Merchandise;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,11 @@ class Client extends Model
     public function internal(): HasMany
     {
         return $this->hasMany(User::class, 'id', 'internal_id');
+    }
+
+    public function merchandise(): belongsTo
+    {
+        return $this->belongsTo(Merchandise::class, 'client_id', ' id');
     }
 
     public function sellerName(?int $id): ?string

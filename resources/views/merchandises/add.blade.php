@@ -38,11 +38,7 @@
                     <div class="row">
                         <div class="card col-md-12">
                             <div class="card-body card-block">
-                                @if(!isset($merchandise))
-                                    <form action="{{ route('merchandise.store') }}" method="post" enctype="multipart/form-data">
-                                @else
-                                    <form action="{{ route('merchandise.update', $merchandise->id) }}" method="post" enctype="multipart/form-data">
-                                @endif
+                                <form action="{{ route('merchandise.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="col-lg-12 form-group" id="div-tel">
                                         <a class="btn btn-success" onclick="insertMerchadise()" style="color: white">@lang('message.Add Merchandise')</a>
@@ -50,10 +46,11 @@
                                         <table class="table table-striped table-bordered" id="boxMerchadise" style="display: none">
                                             <thead>
                                                 <tr>
-                                                    <th>@lang('message.Client')</th>
-                                                    <th>@lang('message.Service Order')</th>
-                                                    <th>@lang('message.Category')</th>
-                                                    <th>@lang('message.Input')</th>
+                                                    <th>@lang('message.Client')*</th>
+                                                    <th>@lang('message.Service Order')*</th>
+                                                    <th>@lang('message.Amount')*</th>
+                                                    <th>@lang('message.Category')*</th>
+                                                    <th>@lang('message.Input')*</th>
                                                     <th>@lang('message.Output')</th>
                                                     <th>@lang('message.Withdrawn By')</th>
                                                     <th>@lang('message.Note')</th>
@@ -72,7 +69,10 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <input type="text" name="insertMechandise_service_order[X]" placeholder="@lang('message.Service Order')" value="">
+                                                        <input type="text" name="insertMechandise_service_order[X]" placeholder="@lang('message.Service Order')">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" min="1" name="insertMechandise_amount[X]" placeholder="@lang('message.Amount')">
                                                     </td>
                                                     <td>
                                                         <select name="insertMechandise_category[X]" class="form-control">
@@ -97,7 +97,7 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <textarea name="note" id="textarea-input" cols="19" placeholder="@lang('message.Note')..." class="form-control"></textarea>
+                                                        <textarea name="insertMechandise_note[X]" id="textarea-input" cols="19" placeholder="@lang('message.Note')..." class="form-control"></textarea>
                                                     </td>
                                                     <td class="text-center">
                                                         <a class="btn btn-danger btn-remove" onclick="removeMerchadise(this)" style="color: white">
@@ -110,10 +110,11 @@
                                         <table class="table table-striped table-bordered" id="boxViewMerchadise" style="margin-top: 20px">
                                             <thead>
                                                 <tr>
-                                                    <th>@lang('message.Client')</th>
-                                                    <th>@lang('message.Service Order')</th>
-                                                    <th>@lang('message.Category')</th>
-                                                    <th>@lang('message.Input')</th>
+                                                    <th>@lang('message.Client')*</th>
+                                                    <th>@lang('message.Service Order')*</th>
+                                                    <th>@lang('message.Amount')*</th>
+                                                    <th>@lang('message.Category')*</th>
+                                                    <th>@lang('message.Input')*</th>
                                                     <th>@lang('message.Output')</th>
                                                     <th>@lang('message.Withdrawn By')</th>
                                                     <th>@lang('message.Note')</th>
@@ -121,38 +122,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $countMechandise = 0;
-                                                if(isset($merchandises)) : foreach ($merchandises as $merchandise):?>
-                                                    <tr>
-                                                        <input type="hidden" name="insertMechandise_id[<?=$count?>]" value="<?=$merchandise->id?>">
-                                                        <input type="text" name="insertMechandise[<?=$count?>]" value="">
-                                                        <td>
-                                                            <select name="insereTelefonePessoa_operadora[<?=$count?>]" class="form-control">
-                                                                <option value=''>@lang('message.Select')...</option>
-                                                                @foreach($categories as $category)
-                                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <input type="tel" name="insereTelefonePessoa_numTelefone[<?=$count?>]" id="numTelefone" class="form-control numTelefone" value="<?=$infoPhone->phone?>">
-                                                        </td>
-                                                        <td>
-                                                            <input type="radio" name="insereTelefonePessoa_whatsapp[<?=$count?>]" value='0'> @lang('message.No')&nbsp;&nbsp;&nbsp;
-                                                            <input type="radio" name="insereTelefonePessoa_whatsapp[<?=$count?>]" value='1'> @lang('message.Yes')
-                                                        </td>
-                                                        <td>
-                                                            <input type="radio" name="insereTelefonePessoa_telprincipal[<?=$count?>]" value='0'> @lang('message.No')&nbsp;&nbsp;&nbsp;
-                                                            <input type="radio" name="insereTelefonePessoa_telprincipal[<?=$count?>]" value='1'> @lang('message.Yes')
-                                                        </td>
-                                                        <td>
-                                                            <a class="btn btn-danger btn-remove" onclick="removerTelefone(this)"><i class="fa fa-trash"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                $countMechandise++;
-                                                endforeach; endif;?>
                                             </tbody>
                                         </table>
                                     </div><!--DIV componente Merchandise -->

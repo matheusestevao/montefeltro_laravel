@@ -26,7 +26,9 @@
 	                                <table id="table-merchandises" class="table table-striped table-bordered">
 				                    	<thead>
 				                    		<th>@lang('message.Id')</th>
+				                    		<th>@lang('message.Client')</th>
 				                    		<th>@lang('message.Service Order')</th>
+				                    		<th>@lang('message.Amount')</th>
 				                    		<th>@lang('message.Category')</th>
 				                    		<th>@lang('message.Input')</th>
 				                    		<th>@lang('message.Output')</th>
@@ -37,23 +39,24 @@
 					                    	@forelse($merchandises as $merchandise)
 						                    	<tr>
 					                    			<td>{{ $merchandise->id }}</td>
-					                    			<td>{{ $merchandise->name }}</td>
-					                    			<td>{{ $merchandise->category }}</td>
-					                    			<td>{{ $merchandise->input }}</td>
-					                    			<td>{{ $merchandise->output }}</td>
-					                    			<td>{{ $merchandise->withdrawn }}</td>
+					                    			<td>{{ $merchandise->client($merchandise->client_id) }}</td>
+					                    			<td>{{ $merchandise->service_order }}</td>
+					                    			<td>{{ $merchandise->amount }}</td>
+					                    			<td>{{ $merchandise->category($merchandise->category_id) }}</td>
+					                    			<td>{{ date('d/m/Y', strtotime($merchandise->input)) }}</td>
+					                    			<td>{{ 
+					                    				$merchandise->output != '' ? date('d/m/Y', strtotime($merchandise->output)) : ''
+					                    			}}</td>
+					                    			<td>{{ $merchandise->withdrawn($merchandise->withdrawn_by) }}</td>
 					                    			<td>
 						                    			@can('merchandises_edit')
 							                    			<a href="{{ route('merchandise.edit', $merchandise->id) }}" class="btn btn-primary" ><i class="fas fa-pencil-alt"></i></a>
 							                    		@endcan
-							                    		@can('merchandises_delete')
-                                                            <a href="javascript:;" data-route="{{ route('merchandise.delete', $merchandise->id) }}" data-user="{{ $merchandise->id }}" class="btn btn-danger delete-merchandise"><i class="far fa-trash-alt"></i></a>
-                                                        @endcan
 						                    		</td>
 					                    		</tr>
 						                    @empty
 						                    	<tr>
-						                    		<td colspan="6">@lang('message.No_Records')</td>
+						                    		<td colspan="8">@lang('message.No_Records')</td>
 						                    	</tr>
 						                    @endforelse
 						                </tbody>

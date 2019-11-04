@@ -16,12 +16,15 @@ class CreateMerchandisesTable extends Migration
         Schema::create('merchandises', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('service_order')->unique();
+            $table->unsignedBigInteger('client_id');
+            $table->integer('amount')->nullable();
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->dateTime('input');
+            $table->date('input');
             $table->unsignedBigInteger('withdrawn_by')->nullable();
             $table->foreign('withdrawn_by')->references('id')->on('users');
-            $table->dateTime('output')->nullable();
+            $table->date('output')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
             $table->softDeletes();

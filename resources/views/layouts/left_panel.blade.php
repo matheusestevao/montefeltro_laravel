@@ -56,19 +56,19 @@
                                     </li>
                                 @endif
 
-                                <li class="menu-item-has-children dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="menu-icon fas fa-list"></i>
-                                        @lang('message.'.$itemMenu->group)
-                                    </a>
-                                    <ul class="sub-menu children dropdown-menu">
-                                        @can($itemMenu->name)
+                                @can($itemMenu->name)
+                                    <li class="menu-item-has-children dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="menu-icon fas fa-list"></i>
+                                            @lang('message.'.$itemMenu->group)
+                                        </a>
+                                        <ul class="sub-menu children dropdown-menu">
                                             <li>
                                                 <i class="menu-icon {{ $itemMenu->menu_icon }}"></i><a href="{{ route($itemMenu->page_index) }}">
                                                     @lang('message.'.$itemMenu->label)
                                                 </a>
                                             </li>
-                                        @endcan
+                                @endcan
                             @else
 
                                 @can($itemMenu->name)

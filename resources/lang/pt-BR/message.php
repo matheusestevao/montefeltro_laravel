@@ -109,6 +109,7 @@ return [
     'Category'                           => 'Categoria',
     'Client'                             => 'Cliente',
     'Add Merchandise'                    => 'Adicionar Mercadoria',
+    'Amount'                             => 'Quantidade',
 
     /*CONTROLLERS*/
     'Module successfully registered.'                  => 'Módulo Cadastrado com sucesso.',
@@ -141,6 +142,12 @@ return [
     'Error deleting Category.'                         => 'Erro ao Deletar a Categoria.',
     'Merchandise deleted successfully.'                => 'Mercadoria Excluida com Sucesso.',
     'Error deleting Merchandise.'                      => 'Erro ao deletar a Mercadoria.',
+    'Merchandise(s) successfully registered.'          => 'Mercadoria(s) Cadastrada(s) com Sucesso.',
+    'Merchandise Updated Successfully.'                => 'Mercadoria Atualizado com Sucesso.',
+    'Service Order is required.'                       => 'Ordem de Serviço é Obrigatório.',
+    'Client is required.'                              => 'Cliente é Obrigatório.',
+    'Category is required.'                            => 'Categoria é Obrigatório.',
+    'Input is required.'                               => 'Entrada é Obrigatório.',
 
     /*ALERTS AND NOTIFICATIONS*/
     'When_updating_the_role_master,_the_permissions_of_the_role_being_edited_will_change_according_to_its_new_master._Any_changes_made_previously_to_the_role_being_edited_will_be_lost.' => 'Ao atualizar o Perfil Master, as permissões do Perfil que esta sendo editada serão alteradas, conforme o seu novo Perfil Master. Qualquer alteração feita anteriormente, no Perfil que esta sendo editado, será perdida.',

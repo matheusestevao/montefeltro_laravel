@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    @can('categories_add')
+    @canany(['categories_add', 'categories_edit'])
         <div class="content mt-3">
             @include('includes.alerts')
             <br />
@@ -59,5 +59,5 @@
         <script>
             window.location.href = "{{ route('home') }}";
         </script>
-    @endcan
+    @endcanany
 @endsection

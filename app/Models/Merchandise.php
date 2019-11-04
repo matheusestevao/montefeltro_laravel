@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Client;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,19 +15,29 @@ class Merchandise extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['service_order', 'category_id', 'input', 'withdrawn_by', 'output', 'note', 'created_by', 'updated_by', 'deleted_by'];
+    protected $fillable = ['service_order', 'client_id', 'amount', 'category_id', 'input', 'withdrawn_by', 'output', 'note', 'created_by', 'updated_by', 'deleted_by'];
 
-    public function category(): string
+    public function category(int $id): string
     {
-    	$category = $this->hasMany(Category::class, 'id', 'category_id');
-        
+    	$category = Category::find($id);
+
         return $category->name;
     }
 
-    public function withdrawn(): string
+    public function client(int $id): string
     {
-    	$seller = $this->hasMany(User::class, 'id', 'withdrawn_by');
+    	$client = Client::find($id);
+        return $client->name;
+    }
 
-        return $seller->name; 
+    public function withdrawn(?int $id): ?string
+    {
+    	if($id) {
+    		$user = User::find($id);
+
+    		return $user->name;
+    	}
+
+        return ''; 
     }
 }

@@ -30,7 +30,7 @@ class MenuController extends Controller
                         ->orderBy('modules.group', 'asc')
                         ->get();
         }
-
+        
         return $menu;
     }
 
