@@ -182,28 +182,27 @@ class ModulesController extends Controller
         $nameModule = str_replace(' ', '_', $nameModule);
         $nameModule = str_replace('-', '_', $nameModule);
 
-        $form['label'] = ucfirst($post['label']);
-        $form['name']  = strtolower($nameModule);
+        $post['label'] = ucfirst($post['label']);
+        $post['name']  = strtolower($nameModule);
 
         $module = Module::find($id);
+        $updateModule = $module->update($post);
 
-        $this->updatePermission($module, $form, '_menu', 'Menu ');
-        $this->updatePermission($module, $form, '_list', 'List ');
-        $this->updatePermission($module, $form, '_add', 'Add ');
-        $this->updatePermission($module, $form, '_edit', 'Edit ');
-        $this->updatePermission($module, $form, '_view', 'View ');
-        $this->updatePermission($module, $form, '_delete', 'Delete ');
-
-        $module->name  = $form['name'];
-        $module->label = $form['label'];
-        $module->update();
+        if($updateModule) {
+            $this->updatePermission($module, $post, '_menu', 'Menu ');
+            $this->updatePermission($module, $post, '_list', 'List ');
+            $this->updatePermission($module, $post, '_add', 'Add ');
+            $this->updatePermission($module, $post, '_edit', 'Edit ');
+            $this->updatePermission($module, $post, '_view', 'View ');
+            $this->updatePermission($module, $post, '_delete', 'Delete ');
+        }
 
         return redirect()
                 ->route('module.index')
                 ->with('success', 'Module Updated Successfully.');
     }
 
-    public function updatePermission(array $module,array $form,string $name,string $label): void
+    public function updatePermission(object $module,array $form,string $name,string $label): void
     {
         $permission = Permission::where('name', $module->name.$name)->get()[0];
         $permission->name  = $form['name'].$name;
