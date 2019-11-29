@@ -71,16 +71,6 @@ class User extends Authenticatable
         return $this->roles->contains('name', $roles);
     }
 
-    public function external_id(): belongsToMany
-    {
-        return $this->belongsToMany(Client::class);
-    }
-
-    public function internal_id(): belongsToMany
-    {
-        return $this->belongsToMany(Client::class);
-    }
-
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new SentEmailResetPassword($token));

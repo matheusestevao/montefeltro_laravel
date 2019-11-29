@@ -33,11 +33,15 @@
 				                    	</thead>
 				                    	<tbody>
 					                    	@forelse($clients as $client)
-						                    	<tr>
+					                    		@php
+					                    			$external = $client->external;
+					                    			$internal = $client->internal;
+					                    		@endphp
+					                    		<tr>
 					                    			<td>{{ $client->id }}</td>
 					                    			<td>{{ $client->name }}</td>
-					                    			<td>{{ $client->sellerName($client->external_id) }}</td>
-					                    			<td>{{ $client->sellerName($client->internal_id) }}</td>
+					                    			<td>{{ isset($external->name) ? $external->name : '' }}</td>
+					                    			<td>{{ isset($internal->name) ? $internal->name : ''}}</td>
 					                    			<td>
 						                    			@can('clients_edit')
 							                    			<a href="{{ route('client.edit', $client->id) }}" class="btn btn-primary" ><i class="fas fa-pencil-alt"></i></a>

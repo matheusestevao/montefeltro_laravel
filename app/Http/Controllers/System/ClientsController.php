@@ -39,7 +39,7 @@ class ClientsController extends Controller
     {
         $pageCurrent = "Clients";
 
-        $clients = Client::all();
+        $clients = Client::with('external')->with('internal')->get();
 
         return view('clients.index')
                 ->with('clients', $clients)
@@ -150,7 +150,7 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientRequest $request,int $id)
+    public function update(ClientRequest $request, int $id)
     {
         $post = $request->all();
 
