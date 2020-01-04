@@ -146,7 +146,7 @@ return [
     'Client is required.'                              => 'Client is required.',
     'Category is required.'                            => 'Category is required.',
     'Input is required.'                               => 'Input is required.',
-    'Amount is required.'                              => 'Amount is required.';
+    'Amount is required.'                              => 'Amount is required.',
 
     /*ALERTS AND NOTIFICATIONS*/
     'When_updating_the_role_master,_the_permissions_of_the_role_being_edited_will_change_according_to_its_new_master._Any_changes_made_previously_to_the_role_being_edited_will_be_lost.' => 'When updating the role master, the permissions of the role being edited will change according to its new master. Any changes made previously to the role being edited will be lost.',

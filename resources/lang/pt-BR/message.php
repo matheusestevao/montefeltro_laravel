@@ -148,6 +148,7 @@ return [
     'Client is required.'                              => 'Cliente é Obrigatório.',
     'Category is required.'                            => 'Categoria é Obrigatório.',
     'Input is required.'                               => 'Entrada é Obrigatório.',
+    'Amount is required.'                              => 'Quantidade é Obrigatório.',
 
     /*ALERTS AND NOTIFICATIONS*/
     'When_updating_the_role_master,_the_permissions_of_the_role_being_edited_will_change_according_to_its_new_master._Any_changes_made_previously_to_the_role_being_edited_will_be_lost.' => 'Ao atualizar o Perfil Master, as permissões do Perfil que esta sendo editada serão alteradas, conforme o seu novo Perfil Master. Qualquer alteração feita anteriormente, no Perfil que esta sendo editado, será perdida.',

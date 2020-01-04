@@ -19,6 +19,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
         <script src="{{ asset('libs/sweetalert/dist/sweetalert.min.js') }}"></script>
 
         <!-- Fonts -->
@@ -33,12 +34,15 @@
         <link rel="stylesheet" href="{{ asset('libs/selectFX/css/cs-skin-elastic.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.css" rel="stylesheet"/>
+
         <!--DASHBOARD CSS -->
         @stack('dashboard_css')
 
         <!--DATATABLE CSS -->
         @stack('datatable_css')
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
     </head>
     
     @yield('left_panel')

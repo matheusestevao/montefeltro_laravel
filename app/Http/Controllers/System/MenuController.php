@@ -19,6 +19,7 @@ class MenuController extends Controller
                         ->where('permissions.name', 'like', '%_menu')
                         ->where('modules.menu_left', '1')
                         ->orderBy('modules.group', 'asc')
+                        ->orderBy('modules.name', 'asc')
                         ->get();
         } else {
             $menu = DB::table('modules')
@@ -28,6 +29,7 @@ class MenuController extends Controller
                         ->where('modules.menu_left', '1')
                         ->where('modules.menu_master', '<>', '1')
                         ->orderBy('modules.group', 'asc')
+                        ->orderBy('modules.name', 'asc')
                         ->get();
         }
         

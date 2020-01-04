@@ -100,9 +100,16 @@ class MerchandisesController extends Controller
             }
         }
 
-        return redirect()
+        if(!isset($saveError)) {
+            return redirect()
                     ->route('merchandise.index')
-                    ->with('success', 'Merchandise(s) successfully registered.'); 
+                    ->with('success', 'Merchandise(s) successfully registered.');
+        } else {
+            return redirect()
+                    ->route('merchandise.edit')
+                    ->with('error', $saveError)
+                    ->withInput();
+        } 
 
     }
 

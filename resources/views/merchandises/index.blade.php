@@ -56,7 +56,7 @@
 					                    		</tr>
 						                    @empty
 						                    	<tr>
-						                    		<td colspan="8">@lang('message.No_Records')</td>
+						                    		<td colspan="9">@lang('message.No_Records')</td>
 						                    	</tr>
 						                    @endforelse
 						                </tbody>
